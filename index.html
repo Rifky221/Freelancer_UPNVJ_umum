@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance UPNVJ — Find Student Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+--sage:#5c6e4f;
+--sage-dark:#3f4a35;
+--moss:#2f3626;
+--cream:#f2eedd;
+--cream-2:#e6e0c6;
+--butter:#e3b23c;
+--coral:#dd6b55;
+--coral-dark:#c65138;
+--ink:#23281c;
+--paper:#fbf9f1;
+--muted:#6b7359;
+--radius:18px;
+}
+*{box-sizing:border-box;}
+body{margin:0; font-family:'Mulish',sans-serif; color:var(--ink); background:var(--paper);}
+h1,h2,h3,.brand,.navlink,.stat b,.btn{font-family:'Baloo 2',sans-serif;}
+h2{font-size:1.5rem; font-weight:700; margin:0 0 4px;}
+h3{font-size:1.05rem; font-weight:700; margin:0;}
+p{margin:0;}
+img{max-width:100%; display:block;}
+:focus-visible{outline:3px solid var(--butter); outline-offset:2px;}
+button, input, textarea, select{font-family:'Mulish',sans-serif;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+/* ---------- top navbar ---------- */
+.navbar{
+position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:2px solid var(--cream-2);
+}
+.navbar-in{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:16px;}
+.brand{color:var(--sage-dark); font-size:1.15rem; font-weight:700; display:flex; align-items:center; gap:8px; white-space:nowrap; background:none; border:none; cursor:pointer; padding:0;}
+.brand span.dot{width:9px; height:9px; border-radius:50%; background:var(--coral); display:inline-block;}
+.navlinks{display:flex; align-items:center; gap:6px;}
+.navlink{
+background:none; border:none; cursor:pointer; font-weight:600; font-size:0.92rem; color:var(--muted);
+padding:9px 15px; border-radius:999px;
+}
+.navlink:hover{background:var(--cream);}
+.navlink.active{background:var(--sage-dark); color:#fff;}
+.nav-right{display:flex; align-items:center; gap:12px;}
+.avatar{
+width:38px; height:38px; border-radius:50%; background:var(--coral); color:#fff; font-weight:800;
+display:flex; align-items:center; justify-content:center; font-family:'Baloo 2'; flex:none; font-size:0.85rem;
+}
+.hamburger{display:none; background:none; border:none; font-size:1.5rem; color:var(--sage-dark); cursor:pointer; padding:4px 8px; border-radius:10px;}
+.hamburger:hover{background:var(--cream);}
+
+.btn{
+font-weight:600; border:none; border-radius:999px; cursor:pointer;
+padding:12px 24px; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px;
+}
+.btn-primary{background:var(--coral); color:#fff; box-shadow:0 5px 0 var(--coral-dark);}
+.btn-primary:active{transform:translateY(2px); box-shadow:0 3px 0 var(--coral-dark);}
+.btn-outline{background:none; border:2px solid rgba(255,255,255,0.5); color:#fff;}
+.btn-outline.on-paper{border-color:var(--cream-2); color:var(--sage-dark);}
+.btn-sm{padding:8px 16px; font-size:0.82rem;}
+.btn-full{width:100%; justify-content:center;}
+.btn[disabled]{opacity:0.55; cursor:default;}
+
+main{display:none;}
+main.active{display:block;}
+
+/* ---------- hero ---------- */
+.hero{background:var(--sage-dark); color:#f4efd9; padding:64px 0 90px; overflow:hidden;}
+.hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px; align-items:center;}
+.badge{
+display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border-radius:999px;
+padding:8px 16px; font-size:0.85rem; font-weight:700; color:#e9e4cd; margin-bottom:22px;
+}
+.hero h1{font-size:2.9rem; line-height:1.12; margin:0 0 20px; font-weight:800; color:#f8f5e8; letter-spacing:-0.01em;}
+.hero h1 em{font-style:normal; color:var(--butter);}
+.hero p.lead{font-size:1.05rem; line-height:1.6; color:#d7dbc0; max-width:46ch; margin-bottom:30px;}
+.hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+
+.hero-card{
+background:var(--paper); border-radius:22px; padding:18px; box-shadow:0 24px 60px rgba(0,0,0,0.28);
+transform:rotate(1.4deg);
+}
+.hero-card-dots{display:flex; gap:6px; padding:2px 6px 14px;}
+.hero-card-dots span{width:9px; height:9px; border-radius:50%; background:var(--cream-2);}
+.hero-search{
+display:flex; align-items:center; gap:10px; background:var(--cream); border-radius:12px; padding:12px 16px;
+color:var(--muted); font-size:0.92rem; font-weight:600; margin-bottom:14px;
+}
+.hero-chips{display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
+.hero-chip{border-radius:999px; padding:7px 14px; font-size:0.8rem; font-weight:700;}
+.hero-chip.on{background:var(--coral); color:#fff;}
+.hero-chip.off{background:var(--cream); color:var(--sage-dark);}
+.hero-result{
+display:flex; align-items:center; gap:12px; border:2px solid var(--cream-2); border-radius:14px; padding:12px;
+margin-bottom:10px; background:#fff;
+}
+.hero-result .name{font-weight:700; font-family:'Baloo 2'; font-size:0.9rem; color:var(--sage-dark);}
+.hero-result .sub{font-size:0.78rem; color:var(--muted);}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;}
+.section-head{max-width:56ch; margin-bottom:34px;}
+.section-head span.eyebrow{color:var(--coral-dark); font-weight:700; font-size:0.85rem;}
+.section-head h2{font-size:1.9rem;}
+.section-head p{color:var(--muted); margin-top:8px; font-size:0.98rem; line-height:1.55;}
+
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.step{background:#fff; border:2px solid var(--cream-2); border-radius:var(--radius); padding:26px;}
+.step .num{
+width:36px; height:36px; border-radius:50%; background:var(--cream); color:var(--sage-dark); font-family:'Baloo 2';
+font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-size:1rem;
+}
+.step h3{margin-bottom:8px;}
+.step p{color:var(--muted); font-size:0.9rem; line-height:1.55;}
+
+.why{background:var(--cream); }
+.why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+.why-item{background:#fff; border-radius:var(--radius); padding:22px; border:2px solid var(--cream-2);}
+.why-item .ic{font-size:1.5rem; margin-bottom:10px;}
+.why-item h3{font-size:0.98rem; margin-bottom:6px;}
+.why-item p{font-size:0.85rem; color:var(--muted); line-height:1.5;}
+
+.featured-foot{display:flex; justify-content:center; margin-top:30px;}
+
+/* ---------- browse / find services ---------- */
+.browse-bar{background:#fff; border:2px solid var(--cream-2); border-radius:var(--radius); padding:20px; margin-bottom:26px;}
+.search-row{display:flex; gap:10px; margin-bottom:16px;}
+.search-row input{
+flex:1; border:2px solid var(--cream-2); border-radius:12px; padding:12px 16px; font-size:0.95rem; background:var(--paper);
+}
+.search-row select{border:2px solid var(--cream-2); border-radius:12px; padding:12px 14px; font-size:0.88rem; background:var(--paper); color:var(--sage-dark); font-weight:600;}
+.filter-label{font-size:0.78rem; font-weight:700; color:var(--muted); margin:0 0 8px; display:block;}
+.chip-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+.chip-row:last-child{margin-bottom:0;}
+.fchip{
+border:2px solid var(--cream-2); background:var(--paper); border-radius:999px; padding:7px 15px; font-size:0.82rem;
+font-weight:700; color:var(--sage-dark); cursor:pointer;
+}
+.fchip.on{background:var(--sage-dark); border-color:var(--sage-dark); color:#fff;}
+
+.result-count{font-size:0.88rem; color:var(--muted); margin-bottom:16px;}
+
+.jasa-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+.jasa-card{border:2px solid var(--cream-2); border-radius:var(--radius); overflow:hidden; background:#fff; display:flex; flex-direction:column; cursor:pointer; text-align:left;}
+.jasa-card:hover{border-color:var(--coral);}
+.jasa-cover{height:96px; display:flex; align-items:center; justify-content:center; font-size:2.2rem;}
+.jasa-body{padding:18px; flex:1;}
+.jasa-body .cat{font-size:0.75rem; font-weight:700; color:var(--coral-dark);}
+.jasa-body h3{margin-top:5px; line-height:1.3;}
+.jasa-seller{display:flex; align-items:center; gap:8px; margin-top:12px; cursor:pointer; border-radius:10px; padding:4px; margin-left:-4px;}
+.jasa-seller:hover{background:var(--cream);}
+.jasa-seller .mini-avatar{width:26px; height:26px; border-radius:50%; color:#fff; font-size:0.68rem; font-weight:800; display:flex; align-items:center; justify-content:center; font-family:'Baloo 2'; flex:none;}
+.jasa-seller .info b{display:block; font-size:0.82rem; color:var(--sage-dark); font-weight:700;}
+.jasa-seller .info span{font-size:0.75rem; color:var(--muted);}
+.jasa-foot{display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-top:1px solid var(--cream-2); margin-top:auto;}
+.rating-line{display:flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:700; color:var(--sage-dark);}
+.rating-line .stars{color:var(--butter); letter-spacing:1px;}
+.price-tag{font-weight:800; color:var(--sage-dark); font-family:'Baloo 2'; font-size:0.98rem;}
+.empty-state{background:#fff; border:2px dashed var(--cream-2); border-radius:var(--radius); padding:48px 20px; text-align:center; color:var(--muted);}
+.empty-state .ic{font-size:2rem; margin-bottom:10px;}
+
+/* ---------- chat ---------- */
+.chat-shell{display:grid; grid-template-columns:280px 1fr; border:2px solid var(--cream-2); border-radius:var(--radius); overflow:hidden; background:#fff; min-height:480px;}
+.chat-inbox{border-right:2px solid var(--cream-2); padding:14px; overflow-y:auto;}
+.chat-inbox-item{display:flex; gap:10px; align-items:center; padding:11px; border-radius:12px; cursor:pointer; margin-bottom:4px; text-align:left; width:100%; background:none; border:none;}
+.chat-inbox-item:hover{background:var(--cream);}
+.chat-inbox-item.active{background:var(--cream);}
+.chat-inbox-item .mini-avatar{width:36px; height:36px; font-size:0.82rem;}
+.chat-inbox-item .txt{overflow:hidden;}
+.chat-inbox-item .txt b{display:block; font-size:0.88rem; color:var(--sage-dark); font-family:'Baloo 2';}
+.chat-inbox-item .txt span{font-size:0.78rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;}
+.chat-main{display:flex; flex-direction:column; padding:20px;}
+.chat-window{flex:1; overflow-y:auto; max-height:340px; display:flex; flex-direction:column; gap:10px; padding:4px;}
+.msg{max-width:72%; padding:10px 14px; border-radius:14px; font-size:0.9rem; line-height:1.45;}
+.msg.them{background:var(--cream); align-self:flex-start; color:var(--ink);}
+.msg.me{background:var(--coral); color:#fff; align-self:flex-end;}
+.chat-input-row{display:flex; gap:8px; margin-top:14px;}
+.chat-input-row input{flex:1; border:2px solid var(--cream-2); border-radius:12px; padding:10px 14px; font-size:0.9rem;}
+.send-btn{background:var(--sage-dark); color:#fff; border:none; border-radius:12px; padding:10px 18px; font-weight:700; cursor:pointer; font-family:'Baloo 2';}
+.chat-empty{display:flex; align-items:center; justify-content:center; flex:1; color:var(--muted); font-size:0.9rem; text-align:center; padding:20px;}
+
+/* ---------- my profile (account) ---------- */
+.card{background:#fff; border:2px solid var(--cream-2); border-radius:var(--radius); padding:26px; margin-bottom:22px;}
+.card-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+.field.full{grid-column:1 / -1;}
+.field label{font-size:0.85rem; font-weight:700; color:var(--sage-dark);}
+.field input, .field select, .field textarea{
+border:2px solid var(--cream-2); border-radius:12px; padding:10px 13px; font-size:0.92rem; background:var(--paper);
+}
+.field textarea{resize:vertical; min-height:76px;}
+.profil-head{display:flex; align-items:center; gap:16px; margin-bottom:22px;}
+.profil-head .avatar{width:64px; height:64px; font-size:1.3rem;}
+
+.order-row{border:2px solid var(--cream-2); border-radius:14px; padding:16px; display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:12px; flex-wrap:wrap;}
+.order-row .oname{font-weight:700; font-family:'Baloo 2'; color:var(--sage-dark); font-size:0.95rem;}
+.order-row .osub{font-size:0.8rem; color:var(--muted); margin-top:2px;}
+.order-row .osub.seller-link{cursor:pointer;}
+.order-row .osub.seller-link:hover{color:var(--coral-dark); text-decoration:underline;}
+.status-pill{border-radius:999px; padding:6px 13px; font-size:0.76rem; font-weight:700; white-space:nowrap;}
+.status-pending{background:#f6e6cf; color:#93601a;}
+.status-progress{background:#e4ecf6; color:#2b5693;}
+.status-done{background:#e4f0da; color:#3b6b2b;}
+
+/* ---------- modals ---------- */
+.modal-overlay{
+display:none; position:fixed; inset:0; background:rgba(20,20,10,0.5); z-index:100; align-items:flex-start;
+justify-content:center; padding:40px 16px; overflow-y:auto;
+}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--paper); border-radius:var(--radius); max-width:640px; width:100%; padding:0; overflow:hidden;}
+.modal-head{background:var(--sage-dark); color:#f4efd9; padding:26px 28px; position:relative;}
+.modal-close{position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.12); border:none; color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.05rem;}
+.modal-close:hover{background:rgba(255,255,255,0.22);}
+.modal-body{padding:26px 28px;}
+.seller-top{display:flex; gap:14px; align-items:center;}
+.seller-top .avatar{width:56px; height:56px; font-size:1.2rem;}
+.seller-top h2{color:#f8f5e8; margin-bottom:2px;}
+.seller-top .sub{color:#cfd4b8; font-size:0.88rem;}
+.verified-tag{display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.12); border-radius:999px; padding:4px 11px; font-size:0.75rem; font-weight:700; color:#e9e4cd; margin-top:8px;}
+.skill-chip{background:var(--cream); border-radius:999px; padding:6px 13px; font-size:0.8rem; font-weight:700; color:var(--sage-dark); display:inline-block; margin:0 6px 6px 0;}
+.rating-summary{display:flex; align-items:center; gap:18px; border:2px solid var(--cream-2); border-radius:14px; padding:18px; margin:18px 0;}
+.rating-summary .num{font-family:'Baloo 2'; font-size:2.1rem; font-weight:800; color:var(--sage-dark); line-height:1;}
+.rating-summary .stars{color:var(--butter); font-size:1rem; letter-spacing:1px;}
+.rating-summary .count{font-size:0.8rem; color:var(--muted); margin-top:3px;}
+.review-item{border-top:1px solid var(--cream-2); padding:14px 0;}
+.review-item:first-child{border-top:none;}
+.review-item .rtop{display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;}
+.review-item .rname{font-weight:700; font-size:0.88rem; color:var(--sage-dark);}
+.review-item .rstars{color:var(--butter); font-size:0.85rem; letter-spacing:1px;}
+.review-item .rdate{font-size:0.74rem; color:var(--muted);}
+.review-item p{font-size:0.87rem; color:var(--ink); line-height:1.5;}
+.modal-actions{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
+
+.profile-service-row{display:flex; align-items:center; gap:12px; border:2px solid var(--cream-2); border-radius:14px; padding:12px; cursor:pointer; background:#fff; width:100%; text-align:left;}
+.profile-service-row:hover{border-color:var(--coral);}
+.profile-service-row .icon{width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex:none;}
+.profile-service-row .txt b{display:block; font-family:'Baloo 2'; font-size:0.9rem; color:var(--sage-dark);}
+.profile-service-row .txt span{font-size:0.78rem; color:var(--muted);}
+
+.star-picker{display:flex; gap:6px; font-size:2rem; color:var(--cream-2); margin:6px 0 18px; cursor:pointer;}
+.star-picker span.on{color:var(--butter);}
+
+.toast{
+position:fixed; bottom:26px; right:26px; background:var(--sage-dark); color:#fff; padding:14px 22px; border-radius:14px;
+font-weight:700; font-family:'Baloo 2'; box-shadow:0 8px 24px rgba(0,0,0,0.2); opacity:0; transform:translateY(10px);
+transition:opacity .25s, transform .25s; pointer-events:none; z-index:200;
+}
+.toast.show{opacity:1; transform:translateY(0);}
+
+footer{background:var(--moss); color:#c6cbb0; padding:36px 0; font-size:0.85rem;}
+footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+footer .brand{color:#e9e4cd;}
+
+@media (max-width:960px){
+.hero-grid{grid-template-columns:1fr;}
+.hero-card{transform:none; max-width:420px;}
+.why-grid{grid-template-columns:1fr 1fr;}
+.jasa-grid{grid-template-columns:1fr 1fr;}
+.steps{grid-template-columns:1fr;}
+}
+@media (max-width:760px){
+.wrap{padding:0 18px;}
+.navlinks{
+position:fixed; top:0; right:0; height:100vh; width:230px; background:var(--sage-dark); flex-direction:column;
+align-items:stretch; padding:80px 16px 20px; transform:translateX(100%); transition:transform .25s ease; z-index:90;
+}
+.navlinks.open{transform:translateX(0);}
+.navlinks .navlink{color:#d7dbc4; text-align:left;}
+.navlinks .navlink.active{background:var(--coral);}
+.hamburger{display:inline-flex; align-items:center; justify-content:center;}
+.hero{padding:44px 0 60px;}
+.hero h1{font-size:2.1rem;}
+.why-grid{grid-template-columns:1fr;}
+.jasa-grid{grid-template-columns:1fr;}
+.form-grid{grid-template-columns:1fr;}
+section{padding:44px 0;}
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+<div class="wrap navbar-in">
+<button class="brand" data-view="beranda"><span class="dot"></span>Freelance UPNVJ</button>
+<nav class="navlinks" id="navlinks">
+<button class="navlink active" data-view="beranda">Home</button>
+<button class="navlink" data-view="cari">Find Services</button>
+<button class="navlink" data-view="chat">Chat</button>
+<button class="navlink" data-view="pesanan">Orders</button>
+<button class="navlink" data-view="profil">My Profile</button>
+</nav>
+<div class="nav-right">
+<div class="avatar" id="topAvatar">AW</div>
+<button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+</div>
+</div>
+</div>
+
+<!-- ================= HOME ================= -->
+<main class="active" id="view-beranda">
+<section class="hero" style="padding-top:0;">
+<div class="wrap hero-grid">
+<div>
+<span class="badge">🎓 Verified UPNVJ student talent</span>
+<h1>Campus talent,<br>ready for <em>your project</em>.</h1>
+<p class="lead">Freelance UPNVJ connects businesses and clients with UPN Veteran Jakarta students skilled in design, coding, video, and photography. Every seller is verified through their campus email, so you know exactly who's working on your project.</p>
+<div class="hero-ctas">
+<button class="btn btn-primary" data-view="cari">Explore talent →</button>
+<button class="btn btn-outline" data-scroll="cara-kerja">See how it works</button>
+</div>
+</div>
+<div class="hero-card">
+<div class="hero-card-dots"><span></span><span></span><span></span></div>
+<div class="hero-search">🔍 search "company profile design"...</div>
+<div class="hero-chips">
+<span class="hero-chip on">Design</span>
+<span class="hero-chip off">Video Editor</span>
+<span class="hero-chip off">Web Dev</span>
+</div>
+<div class="hero-result">
+<div class="mini-avatar-lg" style="width:38px;height:38px;border-radius:50%;background:#e3b23c;color:#fff;font-weight:800;font-family:'Baloo 2';display:flex;align-items:center;justify-content:center;font-size:0.78rem;">RA</div>
+<div><div class="name">Ayyasy Nurfakhri Arkan · Computer Science</div><div class="sub">⭐ 4.9 · Graphic Design</div></div>
+</div>
+<div class="hero-result" style="margin-bottom:0;">
+<div style="width:38px;height:38px;border-radius:50%;background:#a9c4dd;color:#fff;font-weight:800;font-family:'Baloo 2';display:flex;align-items:center;justify-content:center;font-size:0.78rem;">SN</div>
+<div><div class="name">Notiva Yolanda Fitri · Economics</div><div class="sub">⭐ 4.8 · Video Editing</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cara-kerja">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">How it works</span>
+<h2>Three steps to start working together.</h2>
+<p>No need for a long process through an agency. You can directly find and discuss with talent that fits your project needs.</p>
+</div>
+<div class="steps">
+<div class="step">
+<div class="num">1</div>
+<h3>Explore & compare talent</h3>
+<p>Search for students that fit your project needs, filter by faculty, category, or price, then check ratings and reviews from previous clients.</p>
+</div>
+<div class="step">
+<div class="num">2</div>
+<h3>Share your brief via chat</h3>
+<p>Discuss the details, scope of work, and deadlines directly with the seller before work begins.</p>
+</div>
+<div class="step">
+<div class="num">3</div>
+<h3>Receive the work & leave a rating</h3>
+<p>Once the work is done, leave an honest rating and review to help other clients find the best talent.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="why">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Why choose us</span>
+<h2>Built so your business can hire with confidence</h2>
+</div>
+<div class="why-grid">
+<div class="why-item"><div class="ic">📧</div><h3>Verified identity</h3><p>Every seller must verify their @upnvj.ac.id campus email, so you know exactly who's working on your project.</p></div>
+<div class="why-item"><div class="ic">⭐</div><h3>Transparent ratings & reviews</h3><p>Read reviews from previous clients to gauge a seller's work quality before deciding to work together.</p></div>
+<div class="why-item"><div class="ic">💬</div><h3>Direct communication</h3><p>Discuss briefs, revisions, and work progress directly with the seller, with no middleman or agency.</p></div>
+<div class="why-item"><div class="ic">💼</div><h3>More cost-efficient</h3><p>Get competent work at a price that's far more efficient than hiring an agency.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Featured talent</span>
+<h2>Most trusted by clients this week</h2>
+</div>
+<div class="jasa-grid" id="featuredGrid"></div>
+<div class="featured-foot">
+<button class="btn btn-outline on-paper" data-view="cari">See all talent →</button>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ================= FIND SERVICES ================= -->
+<main id="view-cari">
+<section style="padding-top:36px;">
+<div class="wrap">
+<div class="section-head" style="margin-bottom:22px;">
+<h2>Find student services</h2>
+<p>Filter by faculty, category, or keyword to find the seller that fits.</p>
+</div>
+
+<div class="browse-bar">
+<div class="search-row">
+<input type="text" id="searchInput" placeholder="search by service or seller name...">
+<select id="sortSelect">
+<option value="rating">Highest rating</option>
+<option value="priceLow">Lowest price</option>
+<option value="priceHigh">Highest price</option>
+</select>
+</div>
+<span class="filter-label">Faculty</span>
+<div class="chip-row" id="facultyChips"></div>
+<span class="filter-label">Category</span>
+<div class="chip-row" id="categoryChips"></div>
+</div>
+
+<p class="result-count" id="resultCount"></p>
+<div class="jasa-grid" id="browseGrid"></div>
+</div>
+</section>
+</main>
+
+<!-- ================= CHAT ================= -->
+<main id="view-chat">
+<section style="padding-top:36px;">
+<div class="wrap">
+<div class="section-head" style="margin-bottom:22px;">
+<h2>Chat</h2>
+<p>Your conversations with sellers. Start a chat from a service detail page, or continue an existing one here.</p>
+</div>
+<div class="chat-shell">
+<div class="chat-inbox" id="chatInbox"></div>
+<div class="chat-main" id="chatMain"></div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ================= ORDERS ================= -->
+<main id="view-pesanan">
+<section style="padding-top:36px;">
+<div class="wrap">
+<div class="section-head" style="margin-bottom:22px;">
+<h2>My orders</h2>
+<p>Track the status and progress of all the services you've ordered, from pending confirmation to completion.</p>
+</div>
+<div class="card">
+<div class="card-head"><h3>Order history</h3></div>
+<div id="ordersList"></div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- ================= MY PROFILE (ACCOUNT) ================= -->
+<main id="view-profil">
+<section style="padding-top:36px;">
+<div class="wrap">
+<div class="section-head" style="margin-bottom:22px;">
+<h2>My profile</h2>
+<p>Manage your account details here.</p>
+</div>
+
+<div class="card">
+<div class="profil-head">
+<div class="avatar">AW</div>
+<div><h3 style="font-size:1.2rem;">Andra Wijaya</h3><span class="hint" style="color:var(--muted); font-size:0.85rem;">Buyer since August 2026</span></div>
+</div>
+<div class="form-grid">
+<div class="field"><label>Full name</label><input type="text" id="bNama" value="Andra Wijaya"></div>
+<div class="field"><label>Email</label><input type="email" id="bEmail" value="andra.wijaya@gmail.com"></div>
+<div class="field"><label>WhatsApp number</label><input type="text" id="bWa" value="0812-3456-7890"></div>
+<div class="field"><label>City</label><input type="text" id="bKota" value="South Jakarta"></div>
+<div class="field full"><label>About me (optional)</label><textarea id="bBio" placeholder="Tell us a bit about your needs, e.g. what kind of services you often look for...">Often need design and editing services for my family's small business content.</textarea></div>
+</div>
+<button class="btn btn-primary" id="saveProfileBtn">Save Profile</button>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<span class="brand" style="font-weight:700; font-family:'Baloo 2';">Freelance UPNVJ</span>
+<span>Connecting your business with UPN Veteran Jakarta student talent.</span>
+</div>
+</footer>
+
+<!-- ============ MODAL: service detail ============ -->
+<div class="modal-overlay" id="sellerModalOverlay">
+<div class="modal">
+<div class="modal-head">
+<button class="modal-close" id="closeSellerModal" aria-label="Close">✕</button>
+<div class="seller-top">
+<div class="avatar" id="sellerAvatar"></div>
+<div>
+<h2 id="sellerName"></h2>
+<div class="sub" id="sellerSub"></div>
+<span class="verified-tag">✓ Campus email verified</span>
+</div>
+</div>
+</div>
+<div class="modal-body">
+<p id="sellerBio" style="font-size:0.92rem; line-height:1.6; margin-bottom:14px;"></p>
+<div id="sellerSkills"></div>
+
+<div class="card" style="margin:18px 0; padding:18px;">
+<div class="cat" id="jasaCat" style="font-size:0.75rem; font-weight:700; color:var(--coral-dark);"></div>
+<h3 id="jasaTitle" style="margin:4px 0 8px;"></h3>
+<p id="jasaDesc" style="font-size:0.88rem; color:var(--muted); line-height:1.55;"></p>
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+<span class="price-tag" id="jasaPrice"></span>
+<span class="hint" id="jasaDelivery" style="font-size:0.82rem; color:var(--muted);"></span>
+</div>
+</div>
+
+<div class="rating-summary">
+<div><div class="num" id="ratingNum"></div><div class="stars" id="ratingStars"></div></div>
+<div class="count" id="ratingCount"></div>
+</div>
+
+<h3 style="margin-bottom:6px;">Buyer reviews</h3>
+<div id="reviewList"></div>
+
+<div class="modal-actions">
+<button class="btn btn-primary" id="orderBtn">Order This Service</button>
+<button class="btn btn-outline on-paper" id="chatSellerBtn">💬 Chat Seller</button>
+<button class="btn btn-outline on-paper" id="viewProfileBtn">👤 View Profile</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ MODAL: seller profile ============ -->
+<div class="modal-overlay" id="profileModalOverlay">
+<div class="modal">
+<div class="modal-head">
+<button class="modal-close" id="closeProfileModal" aria-label="Close">✕</button>
+<div class="seller-top">
+<div class="avatar" id="profileAvatar"></div>
+<div>
+<h2 id="profileName"></h2>
+<div class="sub" id="profileSub"></div>
+<span class="verified-tag">✓ Campus email verified</span>
+</div>
+</div>
+</div>
+<div class="modal-body">
+<p id="profileBio" style="font-size:0.92rem; line-height:1.6; margin-bottom:14px;"></p>
+<div id="profileSkills" style="margin-bottom:18px;"></div>
+
+<h3 style="margin-bottom:10px;">Services offered</h3>
+<div id="profileServices" style="display:flex; flex-direction:column; gap:10px; margin-bottom:6px;"></div>
+
+<div class="rating-summary">
+<div><div class="num" id="profileRatingNum"></div><div class="stars" id="profileRatingStars"></div></div>
+<div class="count" id="profileRatingCount"></div>
+</div>
+
+<h3 style="margin-bottom:6px;">Reviews</h3>
+<div id="profileReviewList"></div>
+
+<div class="modal-actions">
+<button class="btn btn-primary" id="profileChatBtn">💬 Chat Seller</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ MODAL: leave a rating ============ -->
+<div class="modal-overlay" id="ratingModalOverlay">
+<div class="modal" style="max-width:460px;">
+<div class="modal-head" style="padding:22px 24px;">
+<button class="modal-close" id="closeRatingModal" aria-label="Close">✕</button>
+<h2 style="color:#f8f5e8; font-size:1.2rem;">Leave a rating</h2>
+<div class="sub" id="ratingModalSub" style="color:#cfd4b8; font-size:0.85rem;"></div>
+</div>
+<div class="modal-body">
+<span class="filter-label">How many stars for this order?</span>
+<div class="star-picker" id="starPicker">
+<span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+</div>
+<div class="field full"><label>Review</label><textarea id="ratingComment" placeholder="Share your experience with this seller..."></textarea></div>
+<button class="btn btn-primary btn-full" id="submitRatingBtn">Submit Rating</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- data ---------------- */
+const coverColors = {'Design':'#f3ddd3','Video Editor':'#dbe6d3','Web Dev':'#e6dcc9','Photographer':'#d7e3ee','Writing':'#eee3cf'};
+const avatarColors = ['#dd6b55','#e3b23c','#5c6e4f','#a9c4dd','#c48a9e','#8a9b6e'];
+
+let jasaList = [
+{
+id:1, seller:'Muhammad Rifky Al Madinah', faculty:'Computer Science', prodi:'BSc Information Systems',
+bio:'Web developer with 3 years of experience, using HTML, CSS, and JavaScript.',
+skills:['Figma','Web Design','Laravel'],
+icon:'💻', title:'Company Profile Website Development', category:'Web Dev', price:600000, delivery:'1-2 weeks',
+desc:'Responsive company profile website complete with a product page, contact page, and WhatsApp integration.',
+reviews:[
+{name:'Uwais Ahmad Karim', stars:5, comment:'Neat result and matches the brief, communication was smooth too.', date:'2 weeks ago'},
+{name:'Bagus D.', stars:5, comment:'Fast response, and revisions were handled patiently.', date:'1 month ago'}
+]
+},
+{
+id:2, seller:'Azka Rabbani Fauzi', faculty:'Computer Science', prodi:'BSc Computer Science',
+bio:'Has loved building and designing websites since elementary school, currently building a portfolio through small freelance projects.',
+skills:['Laravel','Figma','React JS'],
+icon:'🎨', title:'Portfolio Website Development', category:'Web Dev', price:400000, delivery:'6 days',
+desc:'One-page portfolio website built with React and Tailwind, responsive and deploy-ready.',
+reviews:[
+{name:'Risqia A.', stars:5, comment:'The design is super aesthetic, matches the vibe I wanted.', date:'5 days ago'},
+{name:'Fairus R.', stars:4, comment:'Good work, just a bit slow on the second revision.', date:'3 weeks ago'}
+]
+},
+{
+id:3, seller:'Efni Nuriyah Romadhoni', faculty:'FISIP', prodi:'BSc Information Science',
+bio:'Part-time content creator, experienced editing short videos for TikTok and Reels for local brands.',
+skills:['CapCut','Premiere Pro','Motion Graphic'],
+icon:'🎬', title:'Reels & TikTok Video Editing', category:'Video Editor', price:100000, delivery:'3 days',
+desc:'Short video editing, up to 60 seconds, including captions, transitions, and music.',
+reviews:[
+{name:'Clara A.', stars:5, comment:'Smooth editing, matched the reference I gave perfectly.', date:'1 week ago'},
+{name:'Fadli R.', stars:4, comment:'Good work and responsive communication.', date:'2 weeks ago'}
+]
+},
+{
+id:4, seller:'Muhammad Hanif Tajir Abdurrahman', faculty:'Engineering', prodi:'BSc Mechanical Engineering',
+bio:"Product photography hobbyist since helping out with his own family's small business.",
+skills:['Lightroom','Product Photography'],
+icon:'📷', title:'Small Business Product Photography', category:'Photographer', price:150000, delivery:'1 day',
+desc:'Product photos for an online catalog, up to 15 photos with basic editing included.',
+reviews:[
+{name:'Siti M.', stars:5, comment:'Great photo results, perfect for my online shop catalog.', date:'4 days ago'}
+]
+},
+{
+id:5, seller:'Lintang Pradipta Ainullah', faculty:'Computer Science', prodi:'BSc Informatics',
+bio:'Has loved writing since being on the campus magazine editorial team, now focused on copywriting.',
+skills:['Copywriting','SEO Writing'],
+icon:'✍️', title:'Article & Social Caption Writing', category:'Writing', price:200000, delivery:'2 days',
+desc:'A 500-700 word article or 5 social media captions, basic keyword research included.',
+reviews:[
+{name:'Yoga S.', stars:5, comment:'The writing is a pleasure to read and delivered on time.', date:'1 week ago'},
+{name:'Marsha T.', stars:5, comment:'Detailed work and always open to discussing the content.', date:'1 month ago'}
+]
+},
+{
+id:6, seller:'Pepara Digdayani', faculty:'Computer Science', prodi:'BSc Informatics Engineering',
+bio:'Focused on front-end development, currently building a portfolio through small freelance projects.',
+skills:['React','Tailwind'],
+icon:'💻', title:'Interactive React Landing Page', category:'Web Dev', price:450000, delivery:'1 week',
+desc:'One-page landing page built with React and Tailwind, responsive and deploy-ready.',
+reviews:[
+{name:'Rian K.', stars:4, comment:'Clean code, fairly easy to build on further.', date:'2 weeks ago'}
+]
+}
+];
+
+function assignAvatarColor(name){
+let sum = 0; for(const c of name) sum += c.charCodeAt(0);
+return avatarColors[sum % avatarColors.length];
+}
+function initials(name){ return name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
+function rupiah(n){ return 'Rp' + n.toLocaleString('id-ID'); }
+function avgRating(reviews){ return reviews.reduce((a,r)=>a+r.stars,0) / reviews.length; }
+function starsHtml(rating){
+const full = Math.round(rating);
+return '★★★★★☆☆☆☆☆'.slice(5-full, 10-full);
+}
+function escapeHtml(str){
+const d = document.createElement('div'); d.textContent = str; return d.innerHTML;
+}
+
+/* ---------------- nav ---------------- */
+const navBtns = [...document.querySelectorAll('[data-view]')];
+const mains = [...document.querySelectorAll('main')];
+function switchView(v){
+mains.forEach(m=>m.classList.remove('active'));
+document.getElementById('view-'+v).classList.add('active');
+[...document.querySelectorAll('.navlink')].forEach(b=>b.classList.toggle('active', b.dataset.view===v));
+document.getElementById('navlinks').classList.remove('open');
+window.scrollTo({top:0, behavior:'instant'});
+if(v==='cari') renderBrowse();
+if(v==='pesanan') renderOrders();
+if(v==='chat'){ renderInbox(); renderChatMain(); }
+}
+navBtns.forEach(b=> b.addEventListener('click', ()=> switchView(b.dataset.view)));
+document.querySelectorAll('[data-scroll]').forEach(b=>{
+b.addEventListener('click', ()=> document.getElementById(b.dataset.scroll).scrollIntoView({behavior:'smooth'}));
+});
+document.getElementById('hamburgerBtn').addEventListener('click', ()=>{
+document.getElementById('navlinks').classList.toggle('open');
+});
+
+function showToast(msg){
+const t = document.getElementById('toast');
+t.textContent = msg; t.classList.add('show');
+clearTimeout(showToast._tid);
+showToast._tid = setTimeout(()=> t.classList.remove('show'), 2400);
+}
+
+/* ---------------- jasa card rendering ---------------- */
+function jasaCardHtml(j){
+const color = assignAvatarColor(j.seller);
+const rating = avgRating(j.reviews);
+return `
+     <button class="jasa-card" data-jid="${j.id}">
+       <div class="jasa-cover" style="background:${coverColors[j.category]}">${j.icon}</div>
+       <div class="jasa-body">
+         <div class="cat">${escapeHtml(j.category)}</div>
+         <h3>${escapeHtml(j.title)}</h3>
+         <div class="jasa-seller" data-seller="${escapeHtml(j.seller)}">
+           <div class="mini-avatar" style="background:${color}">${initials(j.seller)}</div>
+           <div class="info"><b>${escapeHtml(j.seller.split(' ').slice(0,2).join(' '))}</b><span>${escapeHtml(j.faculty)}</span></div>
+         </div>
+       </div>
+       <div class="jasa-foot">
+         <span class="rating-line"><span class="stars">${starsHtml(rating)}</span>${rating.toFixed(1)}</span>
+         <span class="price-tag">${rupiah(j.price)}</span>
+       </div>
+     </button>`;
+}
+function bindJasaCards(container){
+[...container.querySelectorAll('.jasa-card')].forEach(c=>{
+c.addEventListener('click', ()=> openSellerModal(parseInt(c.dataset.jid)));
+});
+[...container.querySelectorAll('.jasa-seller')].forEach(s=>{
+s.addEventListener('click', e=>{
+e.stopPropagation();
+openProfileModal(s.dataset.seller);
+});
+});
+}
+
+/* featured on home: top 3 by rating */
+const featuredGrid = document.getElementById('featuredGrid');
+const featured = [...jasaList].sort((a,b)=> avgRating(b.reviews)-avgRating(a.reviews)).slice(0,3);
+featuredGrid.innerHTML = featured.map(jasaCardHtml).join('');
+bindJasaCards(featuredGrid);
+
+/* ---------------- browse / find services ---------------- */
+const faculties = ['All','Computer Science','FISIP','Engineering','Economics & Business','Law'];
+const categories = ['All','Design','Video Editor','Web Dev','Photographer','Writing'];
+let activeFaculty = 'All';
+let activeCategory = 'All';
+
+const facultyChips = document.getElementById('facultyChips');
+const categoryChips = document.getElementById('categoryChips');
+facultyChips.innerHTML = faculties.map(f=>`<button class="fchip ${f===activeFaculty?'on':''}" data-f="${escapeHtml(f)}">${escapeHtml(f)}</button>`).join('');
+categoryChips.innerHTML = categories.map(c=>`<button class="fchip ${c===activeCategory?'on':''}" data-c="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join('');
+
+facultyChips.addEventListener('click', e=>{
+if(e.target.dataset.f===undefined) return;
+activeFaculty = e.target.dataset.f;
+[...facultyChips.children].forEach(c=> c.classList.toggle('on', c.dataset.f===activeFaculty));
+renderBrowse();
+});
+categoryChips.addEventListener('click', e=>{
+if(e.target.dataset.c===undefined) return;
+activeCategory = e.target.dataset.c;
+[...categoryChips.children].forEach(c=> c.classList.toggle('on', c.dataset.c===activeCategory));
+renderBrowse();
+});
+document.getElementById('searchInput').addEventListener('input', renderBrowse);
+document.getElementById('sortSelect').addEventListener('change', renderBrowse);
+
+function renderBrowse(){
+const q = document.getElementById('searchInput').value.trim().toLowerCase();
+const sort = document.getElementById('sortSelect').value;
+let list = jasaList.filter(j=>{
+const matchFaculty = activeFaculty==='All' || j.faculty===activeFaculty;
+const matchCategory = activeCategory==='All' || j.category===activeCategory;
+const matchQuery = !q || j.title.toLowerCase().includes(q) || j.seller.toLowerCase().includes(q);
+return matchFaculty && matchCategory && matchQuery;
+});
+if(sort==='rating') list.sort((a,b)=> avgRating(b.reviews)-avgRating(a.reviews));
+if(sort==='priceLow') list.sort((a,b)=> a.price-b.price);
+if(sort==='priceHigh') list.sort((a,b)=> b.price-a.price);
+
+document.getElementById('resultCount').textContent = `${list.length} services found`;
+const grid = document.getElementById('browseGrid');
+grid.innerHTML = list.length
+? list.map(jasaCardHtml).join('')
+: `<div class="empty-state" style="grid-column:1/-1;"><div class="ic">🔍</div>No services match this filter. Try a different keyword or filter.</div>`;
+bindJasaCards(grid);
+}
+
+/* ---------------- service detail modal ---------------- */
+let currentJasaId = null;
+const sellerModalOverlay = document.getElementById('sellerModalOverlay');
+
+function openSellerModal(id){
+const j = jasaList.find(x=>x.id===id);
+currentJasaId = id;
+const color = assignAvatarColor(j.seller);
+document.getElementById('sellerAvatar').style.background = color;
+document.getElementById('sellerAvatar').textContent = initials(j.seller);
+document.getElementById('sellerName').textContent = j.seller;
+document.getElementById('sellerSub').textContent = `${j.faculty} · ${j.prodi}`;
+document.getElementById('sellerBio').textContent = j.bio;
+document.getElementById('sellerSkills').innerHTML = j.skills.map(s=>`<span class="skill-chip">${escapeHtml(s)}</span>`).join('');
+document.getElementById('jasaCat').textContent = j.category;
+document.getElementById('jasaTitle').textContent = j.title;
+document.getElementById('jasaDesc').textContent = j.desc;
+document.getElementById('jasaPrice').textContent = rupiah(j.price);
+document.getElementById('jasaDelivery').textContent = '⏱ ' + j.delivery + ' delivery';
+
+const rating = avgRating(j.reviews);
+document.getElementById('ratingNum').textContent = rating.toFixed(1);
+document.getElementById('ratingStars').textContent = starsHtml(rating);
+document.getElementById('ratingCount').textContent = `From ${j.reviews.length} buyer review${j.reviews.length===1?'':'s'}`;
+document.getElementById('reviewList').innerHTML = j.reviews.map(r=>`
+     <div class="review-item">
+       <div class="rtop"><span class="rname">${escapeHtml(r.name)}</span><span class="rdate">${escapeHtml(r.date)}</span></div>
+       <div class="rstars">${starsHtml(r.stars)}</div>
+       <p>${escapeHtml(r.comment)}</p>
+     </div>`).join('');
+
+sellerModalOverlay.classList.add('show');
+}
+document.getElementById('closeSellerModal').addEventListener('click', ()=> sellerModalOverlay.classList.remove('show'));
+sellerModalOverlay.addEventListener('click', e=>{ if(e.target===sellerModalOverlay) sellerModalOverlay.classList.remove('show'); });
+
+document.getElementById('orderBtn').addEventListener('click', ()=>{
+const j = jasaList.find(x=>x.id===currentJasaId);
+orders.unshift({id:Date.now(), jasaId:j.id, seller:j.seller, title:j.title, price:j.price, status:'pending', rated:false});
+sellerModalOverlay.classList.remove('show');
+startOrOpenChat(j.seller, `Hi, I just ordered your service "${j.title}". Please confirm, thanks! 🙏`);
+showToast('✓ Order placed, chat with seller opened');
+switchView('chat');
+});
+document.getElementById('chatSellerBtn').addEventListener('click', ()=>{
+const j = jasaList.find(x=>x.id===currentJasaId);
+sellerModalOverlay.classList.remove('show');
+startOrOpenChat(j.seller, `Hi, I'm interested in your service "${j.title}". Can I ask a few questions first?`);
+switchView('chat');
+});
+document.getElementById('viewProfileBtn').addEventListener('click', ()=>{
+const j = jasaList.find(x=>x.id===currentJasaId);
+sellerModalOverlay.classList.remove('show');
+openProfileModal(j.seller);
+});
+
+/* ---------------- seller profile modal ---------------- */
+const profileModalOverlay = document.getElementById('profileModalOverlay');
+let currentProfileSeller = null;
+
+function openProfileModal(sellerName){
+const services = jasaList.filter(j=>j.seller===sellerName);
+if(services.length===0){ showToast('Profile not available for this seller'); return; }
+currentProfileSeller = sellerName;
+const info = services[0];
+const color = assignAvatarColor(sellerName);
+document.getElementById('profileAvatar').style.background = color;
+document.getElementById('profileAvatar').textContent = initials(sellerName);
+document.getElementById('profileName').textContent = sellerName;
+document.getElementById('profileSub').textContent = `${info.faculty} · ${info.prodi}`;
+document.getElementById('profileBio').textContent = info.bio;
+document.getElementById('profileSkills').innerHTML = info.skills.map(s=>`<span class="skill-chip">${escapeHtml(s)}</span>`).join('');
+
+document.getElementById('profileServices').innerHTML = services.map(s=>`
+     <button class="profile-service-row" data-jid="${s.id}">
+       <div class="icon" style="background:${coverColors[s.category]}">${s.icon}</div>
+       <div class="txt"><b>${escapeHtml(s.title)}</b><span>${escapeHtml(s.category)} · ${rupiah(s.price)}</span></div>
+     </button>`).join('');
+[...document.getElementById('profileServices').querySelectorAll('[data-jid]')].forEach(b=>{
+b.addEventListener('click', ()=>{ profileModalOverlay.classList.remove('show'); openSellerModal(parseInt(b.dataset.jid)); });
+});
+
+const allReviews = services.flatMap(s=>s.reviews);
+const rating = allReviews.length ? allReviews.reduce((a,r)=>a+r.stars,0)/allReviews.length : 0;
+document.getElementById('profileRatingNum').textContent = rating.toFixed(1);
+document.getElementById('profileRatingStars').textContent = starsHtml(rating);
+document.getElementById('profileRatingCount').textContent = `From ${allReviews.length} buyer review${allReviews.length===1?'':'s'}`;
+document.getElementById('profileReviewList').innerHTML = allReviews.map(r=>`
+     <div class="review-item">
+       <div class="rtop"><span class="rname">${escapeHtml(r.name)}</span><span class="rdate">${escapeHtml(r.date)}</span></div>
+       <div class="rstars">${starsHtml(r.stars)}</div>
+       <p>${escapeHtml(r.comment)}</p>
+     </div>`).join('');
+
+profileModalOverlay.classList.add('show');
+}
+document.getElementById('closeProfileModal').addEventListener('click', ()=> profileModalOverlay.classList.remove('show'));
+profileModalOverlay.addEventListener('click', e=>{ if(e.target===profileModalOverlay) profileModalOverlay.classList.remove('show'); });
+document.getElementById('profileChatBtn').addEventListener('click', ()=>{
+const j = jasaList.find(x=>x.seller===currentProfileSeller);
+profileModalOverlay.classList.remove('show');
+startOrOpenChat(currentProfileSeller, `Hi, I'm interested in your service "${j.title}". Can I ask a few questions first?`);
+switchView('chat');
+});
+
+/* ---------------- chat ---------------- */
+let conversations = {
+'Sinta Nuraini': {messages:[
+{who:'them', text:'Hi, what campaign is the video for?'},
+{who:'me', text:'For a small business product promo, about 30 seconds.'},
+{who:'them', text:"Okay got it, I'll work on it, estimated 3 days to finish 🙏"}
+]},
+'Muhammad Rifky Al Madinah': {messages:[
+{who:'them', text:'Hi, how many pages do you need for the company profile?'}
+]}
+};
+let activeChat = null;
+const chatInbox = document.getElementById('chatInbox');
+const chatMain = document.getElementById('chatMain');
+
+function startOrOpenChat(sellerName, openingMessage){
+if(!conversations[sellerName]) conversations[sellerName] = {messages:[]};
+if(openingMessage){
+const msgs = conversations[sellerName].messages;
+const already = msgs.some(m=> m.who==='me' && m.text===openingMessage);
+if(!already) msgs.push({who:'me', text:openingMessage});
+}
+activeChat = sellerName;
+}
+
+function renderInbox(){
+const names = Object.keys(conversations);
+if(!activeChat && names.length) activeChat = names[0];
+if(names.length===0){
+chatInbox.innerHTML = `<div class="chat-empty" style="padding:20px 8px;">No conversations yet. Open a service detail and click "Chat Seller" to start.</div>`;
+return;
+}
+chatInbox.innerHTML = names.map(name=>{
+const c = conversations[name];
+const last = c.messages[c.messages.length-1];
+const color = assignAvatarColor(name);
+const preview = last ? escapeHtml(last.text.slice(0,26)) + (last.text.length>26?'…':'') : 'No messages yet';
+return `<button class="chat-inbox-item ${name===activeChat?'active':''}" data-name="${escapeHtml(name)}">
+       <div class="mini-avatar" style="background:${color}">${initials(name)}</div>
+       <div class="txt"><b>${escapeHtml(name)}</b><span>${preview}</span></div>
+     </button>`;
+}).join('');
+[...chatInbox.querySelectorAll('[data-name]')].forEach(b=>{
+b.addEventListener('click', ()=>{ activeChat = b.dataset.name; renderInbox(); renderChatMain(); });
+});
+}
+
+function renderChatMain(){
+if(!activeChat){
+chatMain.innerHTML = `<div class="chat-empty">Select a conversation on the left, or start a new chat from a service detail page.</div>`;
+return;
+}
+const hasProfile = jasaList.some(j=>j.seller===activeChat);
+chatMain.innerHTML = `
+     <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+       <h3 style="margin:0;">${escapeHtml(activeChat)}</h3>
+       ${hasProfile ? `<button class="btn btn-outline on-paper btn-sm" id="chatViewProfileBtn">👤 View Profile</button>` : ''}
+     </div>
+     <div class="chat-window" id="chatWin"></div>
+     <div class="chat-input-row">
+       <input type="text" id="chatInp" placeholder="Write a message to ${escapeHtml(activeChat.split(' ')[0])}...">
+       <button class="send-btn" id="chatSend">Send</button>
+     </div>`;
+if(hasProfile){
+document.getElementById('chatViewProfileBtn').addEventListener('click', ()=> openProfileModal(activeChat));
+}
+const c = conversations[activeChat];
+const win = document.getElementById('chatWin');
+function paint(){
+win.innerHTML = c.messages.map(m=>`<div class="msg ${m.who==='me'?'me':'them'}">${escapeHtml(m.text)}</div>`).join('');
+win.scrollTop = win.scrollHeight;
+}
+paint();
+const inp = document.getElementById('chatInp');
+const send = ()=>{
+const v = inp.value.trim();
+if(!v) return;
+c.messages.push({who:'me', text:v});
+inp.value=''; paint(); renderInbox();
+setTimeout(()=>{
+const replies = ["Sure, I'll get right on it 🙏","Okay, I'll update you on the progress.","Sure, no problem at all.","Let me check that for a moment."];
+c.messages.push({who:'them', text: replies[Math.floor(Math.random()*replies.length)]});
+paint(); renderInbox();
+}, 700);
+};
+document.getElementById('chatSend').addEventListener('click', send);
+inp.addEventListener('keydown', e=>{ if(e.key==='Enter') send(); });
+}
+
+/* ---------------- my profile: account details ---------------- */
+document.getElementById('saveProfileBtn').addEventListener('click', ()=>{
+const nama = document.getElementById('bNama').value.trim();
+if(!nama){ showToast('Name cannot be empty'); return; }
+document.getElementById('topAvatar').textContent = initials(nama);
+showToast('✓ Profile saved successfully');
+});
+
+/* ---------------- orders / order history ---------------- */
+let orders = [
+{id:1, jasaId:2, seller:'Risqi Alfariansyah Salim', title:'Portfolio Website Development', price:75000, status:'done', rated:true},
+{id:2, jasaId:3, seller:'Alra Aurelia Intania Wilis', title:'Reels & TikTok Video Editing', price:100000, status:'progress', rated:false},
+{id:3, jasaId:1, seller:'Muhammad Rifky Al Madinah', title:'Company Profile Website Development', price:600000, status:'done', rated:false},
+];
+const statusMeta = {
+pending:['status-pending','Pending confirmation'],
+progress:['status-progress','In progress'],
+done:['status-done','Completed']
+};
+function renderOrders(){
+const wrap = document.getElementById('ordersList');
+if(orders.length===0){ wrap.innerHTML = `<div class="empty-state"><div class="ic">📦</div>No orders yet. Go find a service you need.</div>`; return; }
+wrap.innerHTML = orders.map(o=>{
+const [cls,label] = statusMeta[o.status];
+const hasProfile = jasaList.some(j=>j.seller===o.seller);
+let action = '';
+if(o.status==='done'){
+action = o.rated
+? `<button class="btn btn-outline on-paper btn-sm" disabled>✓ Already rated</button>`
+: `<button class="btn btn-primary btn-sm" data-rate="${o.id}">Rate this order</button>`;
+}
+return `
+       <div class="order-row">
+         <div>
+           <div class="oname">${escapeHtml(o.title)}</div>
+           <div class="osub ${hasProfile?'seller-link':''}" ${hasProfile?`data-seller="${escapeHtml(o.seller)}"`:''}>${escapeHtml(o.seller)} · ${rupiah(o.price)}</div>
+         </div>
+         <div style="display:flex; align-items:center; gap:10px;">
+           <span class="status-pill ${cls}">${label}</span>
+           ${action}
+         </div>
+       </div>`;
+}).join('');
+[...wrap.querySelectorAll('[data-rate]')].forEach(b=>{
+b.addEventListener('click', ()=> openRatingModal(parseInt(b.dataset.rate)));
+});
+[...wrap.querySelectorAll('.seller-link')].forEach(el=>{
+el.addEventListener('click', ()=> openProfileModal(el.dataset.seller));
+});
+}
+
+/* ---------------- rating modal ---------------- */
+let ratingOrderId = null;
+let ratingValue = 0;
+const ratingModalOverlay = document.getElementById('ratingModalOverlay');
+const starPicker = document.getElementById('starPicker');
+
+function openRatingModal(orderId){
+const o = orders.find(x=>x.id===orderId);
+ratingOrderId = orderId;
+ratingValue = 0;
+document.getElementById('ratingModalSub').textContent = `${o.title} · ${o.seller}`;
+document.getElementById('ratingComment').value = '';
+paintStars();
+ratingModalOverlay.classList.add('show');
+}
+function paintStars(){
+[...starPicker.children].forEach(s=> s.classList.toggle('on', parseInt(s.dataset.v) <= ratingValue));
+}
+starPicker.addEventListener('click', e=>{
+if(!e.target.dataset.v) return;
+ratingValue = parseInt(e.target.dataset.v);
+paintStars();
+});
+document.getElementById('closeRatingModal').addEventListener('click', ()=> ratingModalOverlay.classList.remove('show'));
+ratingModalOverlay.addEventListener('click', e=>{ if(e.target===ratingModalOverlay) ratingModalOverlay.classList.remove('show'); });
+
+document.getElementById('submitRatingBtn').addEventListener('click', ()=>{
+if(ratingValue===0){ showToast('Please pick a star rating first'); return; }
+const comment = document.getElementById('ratingComment').value.trim();
+const order = orders.find(x=>x.id===ratingOrderId);
+const j = jasaList.find(x=>x.id===order.jasaId);
+if(j){
+j.reviews.unshift({name:'Andra Wijaya (you)', stars:ratingValue, comment: comment || 'No additional comments.', date:'Just now'});
+}
+order.rated = true;
+ratingModalOverlay.classList.remove('show');
+renderOrders();
+showToast('✓ Rating submitted, thanks!');
+});
+
+/* ---------------- init ---------------- */
+renderBrowse();
+renderOrders();
+</script>
+</body></html>
